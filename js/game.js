@@ -34,7 +34,7 @@ function updateWordDisplay() {
 
   if (!display.includes('_')) {
     document.getElementById('result').textContent = 'You Win!';
-    showWinImage();  // <-- 정답 이미지 표시
+    showWinImage();  
     disableAllButtons();
     document.getElementById('play-again').style.display = 'inline-block';
   }
