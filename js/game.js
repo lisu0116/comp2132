@@ -70,7 +70,10 @@ function handleGuess(letter, button) {
 }
 
 function updateHangmanImage() {
-  document.querySelector('#hangman-image img').src = `images/${wrongGuesses}.png`;
+  const img = document.querySelector('#hangman-image img');
+  img.src = `images/${wrongGuesses}.png`;
+  img.classList.add('wrong-guess');
+  setTimeout(() => img.classList.remove('wrong-guess'), 300);
 }
 
 function showWinImage() {

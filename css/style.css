@@ -37,7 +37,6 @@ p {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 #letter-buttons button {
   margin: 5px;
   padding: 10px 15px;
@@ -47,16 +46,15 @@ p {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-
+#letter-buttons button:hover:not(:disabled) {
+  background-color: #3f5872;
+  transform: scale(1.05);
+}
 #letter-buttons button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
-
-#letter-buttons button:hover:not(:disabled) {
-  background-color: #3f5872;
 }
 
 #hangman-image img {
@@ -65,8 +63,23 @@ p {
   margin: 20px 0;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+#hangman-image img.wrong-guess {
+  animation: shake 0.3s;
 }
 
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
 #result {
   font-size: 1.5rem;
   margin: 20px 0;
@@ -81,10 +94,11 @@ p {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease;
 }
-
 #play-again:hover {
   background-color: #3f5872;
+  transform: scale(1.05);
 }
 
 footer {
@@ -96,10 +110,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .main-content {
-    margin: 10px;
-    padding: 10px;
-  }
   #word-display {
     font-size: 1.5rem;
     letter-spacing: 5px;
@@ -109,8 +119,10 @@ footer {
   }
 }
 @media (max-width: 480px) {
-  .main-content {
-    margin: 10px;
-    padding: 10px;
+  #word-display {
+    font-size: 1.2rem;
+  }
+  #hangman-image img {
+    width: 130px;
   }
 }
